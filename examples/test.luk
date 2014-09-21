@@ -3,7 +3,7 @@ class test
 int testInt = 0
 str testString = "Hol-a"
 
-func add : (num1, num2) -> int
+func add : (int num1, int num2) -> int
     int result = num1 + num2
     return result
 
