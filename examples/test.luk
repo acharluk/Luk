@@ -1,7 +1,18 @@
 class test
 
 int testInt = 0
+str testString = "Hol-a"
 
-func add = (num1, num2) -> int
+func add : (num1, num2) -> int
     int result = num1 + num2
     return result
+
+func getString : () -> str
+    return "Hello World!"
+
+func print : (str stringToPrint) -> void
+    print(stringToPrint)
+
+int added = add(testInt, 5)
+str hw = getString()
+print(hw)
