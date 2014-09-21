@@ -1,0 +1,7 @@
+class test
+
+int testInt = 0
+
+func add = (num1, num2) -> int
+    int result = num1 + num2
+    return result

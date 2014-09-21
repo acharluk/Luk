@@ -1,0 +1,11 @@
+Class declaration:
+'class <name>'
+
+Method declaration:
+'func <name> = (parameters) -> <type>'
+( "->" means returns )
+
+Variables:
+'<type> <name> = <value>'
+Variable types:
+'str, int, bool, etc.'
