@@ -3,6 +3,8 @@ class test
 int testInt = 0
 str testString = "Hol-a"
 
+bool testBool = true
+
 func add : (int num1, int num2) -> int
     int result = num1 + num2
     return result
@@ -15,4 +17,9 @@ func print : (str stringToPrint) -> void
 
 int added = add(testInt, 5)
 str hw = getString()
-print(hw)
+
+if testBool :
+    print(hw)
+
+while int i = 0, 10 :
+    add(testInt, i)
