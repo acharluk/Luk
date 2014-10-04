@@ -1,6 +1,6 @@
 package com.acharluk.luk.parser;
 
-import com.acharluk.luk.Block;
+import com.acharluk.luk.block.Block;
 import com.acharluk.luk.tokenizer.Tokenizer;
 
 /**
