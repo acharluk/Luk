@@ -14,12 +14,20 @@ public class Method extends Block {
     private Parameter[] params;
     private Value returnValue;
 
-    public Method(Block superBlock) {
+    public Method(Block superBlock, String name, Type type, Parameter[] params) {
         super(superBlock);
+
+        this.name = name;
+        this.type = type;
+        this.params = params;
     }
 
     @Override
     public void run() {
+        invoke();
+    }
+
+    public void invoke(Value... values) {
 
     }
 }
