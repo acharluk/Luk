@@ -1,5 +1,7 @@
 package com.acharluk.luk.block;
 
+import com.acharluk.luk.Variable;
+
 import java.util.ArrayList;
 
 /**
@@ -9,10 +11,12 @@ public abstract class Block {
 
     private Block superBlock;
     private ArrayList<Block> subBlocks;
+    private ArrayList<Variable> variables;
 
     public Block(Block superBlock) {
         this.superBlock = superBlock;
         this.subBlocks = new ArrayList<Block>();
+        this.variables = new ArrayList<Variable>();
     }
 
     public Block getSuperBlock() {
@@ -21,6 +25,19 @@ public abstract class Block {
 
     public void addBlock(Block block) {
         subBlocks.add(block);
+    }
+
+    public Variable getVariable(String name) {
+        for (Variable v : variables) {
+            if (v.getName().equals(name)) {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public void addVariable(Variable v) {
+        variables.add(v);
     }
 
     public abstract void run();
