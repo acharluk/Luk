@@ -5,6 +5,6 @@ package com.acharluk.luk;
  */
 public enum BuiltInType implements Type {
 
-    STRING, INTEGER, VOID;
+    STRING, INTEGER, VOID
 
 }

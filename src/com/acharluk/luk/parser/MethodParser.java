@@ -51,7 +51,7 @@ public class MethodParser extends Parser<Method> {
         }
 
         tokenizer.nextToken();
-        //tokenizer.nextToken();
+        tokenizer.nextToken();
 
         String returnType = tokenizer.nextToken().getToken();
 

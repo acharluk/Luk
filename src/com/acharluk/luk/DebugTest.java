@@ -65,8 +65,6 @@ public class DebugTest {
             for (Block b : c.getSubBlocks()) {
                 if (b instanceof Method) {
                     Method method = (Method) b;
-                    System.out.println(method.getName());
-                    System.out.println(method.getType());
                     if (method.getName().equals("main") && method.getType().equals("void") && method.getParameters().length == 0) {
                         main = c;
                     }
