@@ -3,11 +3,10 @@ package com.acharluk.luk.parser;
 import com.acharluk.luk.Type;
 import com.acharluk.luk.Variable;
 import com.acharluk.luk.block.Block;
+import com.acharluk.luk.block.VariableBlock;
 import com.acharluk.luk.tokenizer.Token;
 import com.acharluk.luk.tokenizer.TokenType;
 import com.acharluk.luk.tokenizer.Tokenizer;
-
-import java.awt.*;
 
 /**
  * Created by ACharLuk on 12/02/2015.
@@ -22,7 +21,7 @@ public class VariableParser extends Parser {
     public Block parse(Block superBlock, Tokenizer tokenizer) {
         tokenizer.nextToken(); // "var"
 
-        Type type = Type.valueOf(tokenizer.nextToken().getToken().toUpperCase());
+        String type = tokenizer.nextToken().getToken();
         String name = tokenizer.nextToken().getToken();
 
         tokenizer.nextToken(); // "="
@@ -39,7 +38,6 @@ public class VariableParser extends Parser {
             value = superBlock.getVariable(v.getToken()).getValue();
         }
 
-        superBlock.addVariable(new Variable(superBlock, type, name, value));
-        return null;
+        return new VariableBlock(superBlock, type, name, value);
     }
 }

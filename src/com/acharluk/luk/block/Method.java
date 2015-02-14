@@ -1,20 +1,17 @@
 package com.acharluk.luk.block;
 
-import com.acharluk.luk.Parameter;
-import com.acharluk.luk.Type;
-import com.acharluk.luk.Value;
+import com.acharluk.luk.*;
 
 /**
  * Created by ACharLuk on 06/01/2015.
  */
 public class Method extends Block {
 
-    private String name;
-    private Type type;
+    private String name, type;
     private Parameter[] params;
     private Value returnValue;
 
-    public Method(Block superBlock, String name, Type type, Parameter[] params) {
+    public Method(Block superBlock, String name, String type, Parameter[] params) {
         super(superBlock);
 
         this.name = name;
@@ -27,7 +24,38 @@ public class Method extends Block {
         invoke();
     }
 
-    public void invoke(Value... values) {
+    public Value invoke(Value... values) {
+        Type t = Type.match(type.toString());
 
+        if (values.length != params.length) {
+            throw new IllegalArgumentException("Wrong number of values for parameters.");
+        }
+
+        for (int i = 0; i < values.length && i < params.length; i++) {
+            Parameter p = params[i];
+            Value v = values[i];
+
+            if (p.getType() != v.getType()) {
+                throw new IllegalStateException("Parameter " + p.getName() + " should be " + p.getType() + ". Got " + v.getType());
+            }
+
+            addVariable(new Variable(this, p.getType(), p.getName(), v.getValue()));
+        }
+
+        for (Block b : getSubBlocks()) {
+            b.run();
+
+            if (returnValue != null) {
+                break;
+            }
+        }
+
+        if (returnValue == null && t != BuiltInType.VOID) {
+            throw new IllegalStateException("Expected return value, got none.");
+        }
+
+        Value localReturnValue = returnValue;
+        returnValue = null;
+        return localReturnValue;
     }
 }

@@ -1,5 +1,6 @@
 package com.acharluk.luk.parser;
 
+import com.acharluk.luk.BuiltInType;
 import com.acharluk.luk.Parameter;
 import com.acharluk.luk.Type;
 import com.acharluk.luk.block.Block;
@@ -43,7 +44,7 @@ public class MethodParser extends Parser<Method> {
                 } else {
                     paramData[1] = token.getToken();
 
-                    params.add(new Parameter(Type.valueOf(paramData[0].toUpperCase()), paramData[1]));
+                    params.add(new Parameter(BuiltInType.valueOf(paramData[0].toUpperCase()), paramData[1]));
 
                     paramData = new String[2];
                 }
@@ -51,9 +52,9 @@ public class MethodParser extends Parser<Method> {
         }
 
         tokenizer.nextToken();
-        tokenizer.nextToken();
+        //tokenizer.nextToken();
 
-        Type returnType = Type.valueOf(tokenizer.nextToken().getToken().toUpperCase());
+        String returnType = tokenizer.nextToken().getToken();
 
         return new Method(superBlock, name, returnType, params.toArray(new Parameter[params.size()]));
     }
