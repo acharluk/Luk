@@ -3,6 +3,7 @@ package com.acharluk.luk.block;
 import com.acharluk.luk.Variable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by ACharLuk on 02/10/2014.
@@ -15,12 +16,23 @@ public abstract class Block {
 
     public Block(Block superBlock) {
         this.superBlock = superBlock;
-        this.subBlocks = new ArrayList<Block>();
-        this.variables = new ArrayList<Variable>();
+        this.subBlocks = new ArrayList<>();
+        this.variables = new ArrayList<>();
     }
 
     public Block getSuperBlock() {
         return superBlock;
+    }
+
+    public ArrayList<Block> getBlockTree() {
+        ArrayList<Block> blocks = new ArrayList<Block>();
+        Block block = this;
+        do {
+            blocks.add(block);
+            block = block.getSuperBlock();
+        } while (block != null);
+        Collections.reverse(blocks);
+        return blocks;
     }
 
     public Block[] getSubBlocks() {
@@ -32,6 +44,8 @@ public abstract class Block {
     }
 
     public Variable getVariable(String name) {
+        // Check the superblocks first.
+
         for (Variable v : variables) {
             if (v.getName().equals(name)) {
                 return v;

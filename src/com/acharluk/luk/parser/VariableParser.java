@@ -1,7 +1,5 @@
 package com.acharluk.luk.parser;
 
-import com.acharluk.luk.Type;
-import com.acharluk.luk.Variable;
 import com.acharluk.luk.block.Block;
 import com.acharluk.luk.block.VariableBlock;
 import com.acharluk.luk.tokenizer.Token;
@@ -14,7 +12,7 @@ import com.acharluk.luk.tokenizer.Tokenizer;
 public class VariableParser extends Parser {
     @Override
     public boolean shouldParse(String line) {
-        return line.matches("var [a-zA-Z]+ [a-zA-Z0-9]+ = \"?[a-zA-Z0-9]\"?");
+        return line.matches("var [a-zA-Z]+ [a-zA-Z0-9]+ = (\")?[a-zA-Z0-9]*(\")?");
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.acharluk.luk.parser;
 
 import com.acharluk.luk.BuiltInType;
 import com.acharluk.luk.Parameter;
-import com.acharluk.luk.Type;
 import com.acharluk.luk.block.Block;
 import com.acharluk.luk.block.Method;
 import com.acharluk.luk.tokenizer.Token;
